@@ -170,3 +170,6 @@ participants.db
 # adobe files
 *.ai
 *.psd
+
+#macOS  system files
+.DS_Store

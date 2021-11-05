@@ -251,3 +251,5 @@ participants.db
 *.ai
 *.psd
 
+#macOS  system files
+.DS_Store

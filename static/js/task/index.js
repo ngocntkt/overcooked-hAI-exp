@@ -8,6 +8,8 @@ import OvercookedSinglePlayerTask from "./js/overcooked-single";
 import getOvercookedPolicy from "./js/load_tf_model.js";
 
 import * as Overcooked from "overcooked"
+import 'regenerator-runtime/runtime'
+
 let OvercookedMDP = Overcooked.OvercookedMDP;
 let Direction = OvercookedMDP.Direction;
 let Action = OvercookedMDP.Action;
@@ -73,7 +75,7 @@ let layouts = {
 let main_trial_order =
     ["cramped_room", "asymmetric_advantages", "coordination_ring", "random3", "random0"];
 
-$(document).ready(() => {
+$(document).ready(async function () {
     /*
      * Requires:
      *     psiTurk.js
@@ -103,9 +105,14 @@ $(document).ready(() => {
         "exp/complete.html",
         "debug_initpage.html"
     ];
-    psiTurk.preloadPages(pages_to_preload);
-    psiTurk.preloadImages([]);
+    
+    // Call preloadPages in psiTurk 3
+    const init = (async () => {
+        await psiTurk.preloadPages(pages_to_preload);
+        await psiTurk.preloadImages([]);
+    })()
 
+    
     /***********************************
         Set up conditions and blocks
     ************************************/
@@ -737,6 +744,7 @@ $(document).ready(() => {
     /*******************
      * Run Task
      ******************/
+    await init
     setup_exp_pages();
     instructions.loadPage();
 });
