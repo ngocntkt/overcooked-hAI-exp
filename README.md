@@ -16,7 +16,7 @@ npm run build
 (python 3.8+). E.g., with anaconda, run
 ```
 conda create -n psiturk_test_env python=3.8.9
-conda activate psiturk_test_env
+source activate psiturk_test_env
 pip install psiturk
 ```
 - Go into the main folder and run `psiturk`.
